@@ -202,7 +202,7 @@ All fields are optional; the defaults are the safe ones.
   before any Agent is created — a tracker installed later captures nothing.
 - DSH core `0.2.x` for the session-menu and overlay slots it extends.
 
-No other plugin is required — in particular nothing from `dsh-chat-manager`.
+No other plugin is required.
 `sessions` is used when present, to stop a running turn before teardown.
 
 ## Limitations
