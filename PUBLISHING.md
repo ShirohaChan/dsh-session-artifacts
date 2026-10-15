@@ -25,20 +25,67 @@ local. The current run is 13 files / ~38 kB.
 
 ## 1. Fill in the identity fields
 
-`LICENSE` and `package.json` still need the copyright holder. `repository`,
-`homepage`, `bugs` and `author` are currently absent.
+## 1. Identity fields
+
+Done: `LICENSE` (MIT, `ShirohaChan`) and the `author`, `repository`, `homepage`
+and `bugs` fields in `package.json` are filled in. The commit identity uses
+GitHub's noreply address (`139953471+ShirohaChan@users.noreply.github.com`) so
+no real email is published.
 
 ## 2. Repository
 
+Done — `main` at `6b4bc1e`, tracked against
+`https://github.com/ShirohaChan/dsh-session-artifacts.git`.
+
 ```sh
-git init
-git add -A
-git commit -m "dsh-session-artifacts 0.7.0"
-git remote add origin https://github.com/<owner>/dsh-session-artifacts.git
-git push -u origin main
+git push          # subsequent pushes
 ```
 
-`.gitignore` already excludes `node_modules`, `*.tgz` and local scratch.
+`.gitignore` excludes `node_modules`, `*.tgz` and local scratch.
+
+### Network and authentication on this machine
+
+Both were measured rather than assumed, and the first two attempts failed, so
+the working configuration is recorded here.
+
+**`github.com` is not reachable directly.** `git clone`/`push` over HTTPS stall
+or reset, `raw.githubusercontent.com` resets, and **SSH is unusable** — port 22
+and `ssh.github.com:443` complete the TCP handshake and then hang, which is why
+the generated `~/.ssh/id_ed25519` is not registered anywhere. What does work
+directly: `api.github.com`, `codeload.github.com`, and `registry.npmjs.org`.
+
+A local proxy (v2rayN / xray) listens on `127.0.0.1:10808` as a **mixed
+inbound** — it answers both SOCKS5 and HTTP. Both schemes carry git's own
+traffic, but **only `http://` works for authentication**:
+
+```sh
+git config --local http.https://github.com.proxy http://127.0.0.1:10808
+```
+
+> `socks5h://` makes git's transport work but breaks the credential helper:
+> GCM is .NET and its `ServicePointManager` rejects the `socks5h` scheme with
+> *"不支持具有 socks5h 方案的代理"*. That failure surfaces late, as
+> `could not read Username for 'https://github.com'`, which reads like a missing
+> credential rather than a bad proxy scheme.
+
+The proxy is configured **per repository**, not globally, so other repositories
+are unaffected. It also requires the proxy client's *system* proxy to be on, for
+the credential helper's own OAuth calls.
+
+**No PAT is needed.** Git Credential Manager ships with this Git installation
+(v2.7.3, under `AppData/Local/hermes/git/mingw64/bin`) — note it is *not* in
+`C:\Program Files\Git`, which is why a search there finds nothing. GCM
+authenticates through the browser once, then stores the token in Windows
+Credential Manager (`git:https://github.com`), so later pushes need no prompt:
+
+```sh
+git config --local credential.helper ""        # reset the inherited helper-selector
+git config --local --add credential.helper manager
+git config --local credential.https://github.com.provider github
+```
+
+The browser flow shows a **"Connect to GitHub"** window; completing it once is
+the whole authentication step.
 
 ## 3. npm
 
