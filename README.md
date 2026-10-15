@@ -1,6 +1,6 @@
 # dsh-session-artifacts
 
-**This package is built by DeepSeek-v4.1 flash!**
+**This package is built by DeepSeek-v4.1 flash!**\
 **Clean up what a session left in your workspace** — and, when you want it,
 delete the session record too. Opt-in, previewed, and verified before anything
 is removed.
