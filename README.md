@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/dsh-session-artifacts.svg)](https://www.npmjs.com/package/dsh-session-artifacts)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-**English** · [中文](README.zh.md)
+**English** · [中文](README-zh.md)
 
 **Clean up what a session left in your workspace** — and, when you want it,
 delete the session record too. Opt-in, previewed, and verified before anything

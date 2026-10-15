@@ -1,6 +1,6 @@
 {
   "name": "dsh-session-artifacts",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Delete a DSH session together with the workspace artifacts that session produced — opt-in, previewed, and verified before removal.",
   "keywords": [
     "dsh-plugin",
@@ -32,6 +32,7 @@
     "src",
     "cordis.patch.yml",
     "README.md",
+    "README-zh.md",
     "CHANGELOG.md",
     "LICENSE"
   ],

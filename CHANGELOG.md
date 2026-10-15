@@ -4,6 +4,24 @@ All notable changes to this plugin. Versions follow [Semantic Versioning](https:
 
 Entries below `1.0.0` are pre-release: behaviour may change between minor versions.
 
+## 0.7.2
+
+Documentation packaging fix — no code changes.
+
+- **Rename `README.zh.md` to `README-zh.md`.** npm chooses a package's readme
+  with a `{README,README.*}` glob and takes the **first** match. `README.zh.md`
+  matches that glob, so the published 0.7.1 rendered the **Chinese** text on
+  npmjs.com while GitHub showed the English one — and because the glob order
+  comes from the directory listing, the choice is not even stable across
+  filesystems. Renaming moves the file outside both that glob and npm's
+  always-included `readme.*` patterns, so npm now selects `README.md`
+  deterministically. `README-zh.md` is listed in `files`, so the Chinese text
+  still ships in the tarball.
+
+  Two fixes that do **not** work, for the record: listing the file in `files`
+  cannot exclude it (`readme.*` is always packed regardless), and neither can
+  `.npmignore`.
+
 ## 0.7.1
 
 Documentation only — no code changes.
