@@ -4,6 +4,21 @@ All notable changes to this plugin. Versions follow [Semantic Versioning](https:
 
 Entries below `1.0.0` are pre-release: behaviour may change between minor versions.
 
+## 0.7.1
+
+Documentation only — no code changes.
+
+- **Bilingual README.** `README.md` (English) and `README.zh.md` (Chinese), each
+  linking to the other. `README.zh.md` is listed in `package.json` `files`;
+  npm ships `README.md` unconditionally but would otherwise omit the Chinese one.
+- **npm and license badges**, and an install line for the published package,
+  since `dsh plugin add` resolves a bare package name through the registry.
+- Records the model attribution line in both language files.
+
+Note for anyone reading the registry entry: npm captures the README **at publish
+time**, so the copy shown on the package page is a snapshot. This release exists
+to refresh it.
+
 ## 0.7.0
 
 Compatibility guards. This plugin reads a few things DSH does not publish as
