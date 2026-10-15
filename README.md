@@ -1,6 +1,6 @@
 # dsh-session-artifacts
 
-**This package is built by DeepSeek-v4.1 flash!**\
+**This package is built by DeepSeek-v4.1 flash!**
 
 [![npm](https://img.shields.io/npm/v/dsh-session-artifacts.svg)](https://www.npmjs.com/package/dsh-session-artifacts)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -272,7 +272,7 @@ MIT
 
 [English](#dsh-session-artifacts) · **中文**
 
-**本包由 DeepSeek-v4.1 flash 构建！**\
+**本包由 DeepSeek-v4.1 flash 构建！**
 
 **清理会话留在你工作区里的东西** —— 需要时，连会话记录一起删掉。全部由你勾选、删除前预览、逐项复核。
 
