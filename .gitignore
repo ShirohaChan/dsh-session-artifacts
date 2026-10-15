@@ -1,0 +1,17 @@
+# Build and packaging artifacts
+
+# Dependencies — the Host provides the runtime; nothing here is vendored.
+node_modules/
+
+# npm pack output
+*.tgz
+
+# Local scratch
+.tmp/
+*.log
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

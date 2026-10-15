@@ -1,0 +1,7 @@
+# dsh-session-artifacts bundle patch — inserts its own row into the web plugin
+# roster. The plugin is self-contained: it removes the session record itself and
+# never calls dsh-chat-manager's /plugins/dsh-session-delete route, so disabling
+# that plugin does not disable this one.
+- insert:
+    - id: ui-session-artifacts
+      name: dsh-session-artifacts

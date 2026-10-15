@@ -1,0 +1,7 @@
+# Normalize to LF in the repository and in the working tree.
+#
+# This plugin ships a hand-written client bundle and Node sources that run on
+# Windows, Linux and macOS. Fixing the line ending in both directions means the
+# published tarball and a checkout are byte-identical on every platform, so a
+# CRLF working copy can never leak into what other people install.
+* text=auto eol=lf

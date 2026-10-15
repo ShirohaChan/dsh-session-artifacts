@@ -1,0 +1,61 @@
+{
+  "name": "dsh-session-artifacts",
+  "version": "0.7.0",
+  "description": "Delete a DSH session together with the workspace artifacts that session produced — opt-in, previewed, and verified before removal.",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "session",
+    "session-delete",
+    "artifacts",
+    "workspace"
+  ],
+  "license": "MIT",
+  "author": "ShirohaChan <139953471+ShirohaChan@users.noreply.github.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShirohaChan/dsh-session-artifacts.git"
+  },
+  "homepage": "https://github.com/ShirohaChan/dsh-session-artifacts#readme",
+  "bugs": {
+    "url": "https://github.com/ShirohaChan/dsh-session-artifacts/issues"
+  },
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "cordis.patch.yml",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-primitives",
+        "@deepseek-ai/dsh-client-locale"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "test": "node tests/artifacts.test.mjs && node tests/http.test.mjs && node tests/apply.test.mjs && node tests/shell.test.mjs && node tests/session-log.test.mjs && node tests/agent-handles.test.mjs"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
+}
